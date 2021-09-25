@@ -24,7 +24,7 @@ class Datalink {
         bool strict;
 };
 
-Datalink::Datalink(uint8_t header, uint8_t size, bool strict=false) {
+Datalink::Datalink(uint8_t header, uint8_t size, bool strict) {
     this->header = header;
     this->size = size;
     this->buffer = new uint8_t[this->size];
@@ -49,7 +49,7 @@ void Datalink::read(Stream &uart) {
                 this->index += length - 1;
                 this->available = true;
             }
-            if(this->strict) {
+            else if(this->strict) {
                 throw Exception(datalink_error::INVALID__CHECKSUM);
             }
         } 
