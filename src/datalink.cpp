@@ -11,7 +11,7 @@ namespace datalink_error {
 
 class Datalink {
     public:
-        Datalink(uint8_t header, uint8_t size, bool strict=false);
+        Datalink(uint8_t header, uint8_t size, bool strict);
         void read(Stream &uart);
         uint8_t* getPayload();
         void send(uint8_t* payload, uint8_t size, Stream &uart);
